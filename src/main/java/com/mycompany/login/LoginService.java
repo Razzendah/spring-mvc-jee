@@ -1,6 +1,9 @@
-package com.mycompany.jee;
+package com.mycompany.login;
 
-public class UserValidationService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class LoginService {
 
 	public boolean isUserValid(String user, String pass) {
 		if (user.equals("admin") && pass.equals("dummy")) {

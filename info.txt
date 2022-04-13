@@ -1,0 +1,13 @@
+spring-mvc
+DispatcherServlet -> FontController
+
+/login -> LoginController (Handler)
+Hello World
+
+View Resolver
+login -> /WEB-INF/views/login.jsp
+
+login.jsp -> View
+
+prefix -> /WEB-INF/views/
+suffix -> jsp
