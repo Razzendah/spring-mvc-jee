@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
 	public boolean isUserValid(String user, String pass) {
-		if (user.equals("admin") && pass.equals("dummy")) {
+		if (user.equals("asd") && pass.equals("asd")) {
 			return true;
 		}
 

@@ -3,20 +3,26 @@ package com.mycompany.todo;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.validation.constraints.Size;
+
 public class Todo {
 
 	private int id;
 	private String user;
+	@Size(min = 6, message = "Enter at least 6 characters")
 	private String desc;
 	private Date targetDate;
-	private String isDone;
+	private boolean done;
 
-	public Todo(int id, String user, String desc, Date targetDate, String isDone) {
+	public Todo(int id, String user, String desc, Date targetDate, boolean done) {
 		this.id = id;
 		this.user = user;
 		this.desc = desc;
 		this.targetDate = targetDate;
-		this.isDone = isDone;
+		this.done = done;
+	}
+
+	public Todo() {
 	}
 
 	public int getId() {
@@ -51,12 +57,12 @@ public class Todo {
 		this.targetDate = targetDate;
 	}
 
-	public String getIsDone() {
-		return this.isDone;
+	public boolean isDone() {
+		return this.done;
 	}
 
-	public void setIsDone(String isDone) {
-		this.isDone = isDone;
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 
 	@Override
@@ -66,7 +72,7 @@ public class Todo {
 				", user='" + getUser() + "'" +
 				", desc='" + getDesc() + "'" +
 				", targetDate='" + getTargetDate() + "'" +
-				", isDone='" + getIsDone() + "'" +
+				", isDone='" + isDone() + "'" +
 				"]";
 	}
 
@@ -85,7 +91,7 @@ public class Todo {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, user, desc, targetDate, isDone);
+		return Objects.hash(id, user, desc, targetDate, done);
 	}
 
 }

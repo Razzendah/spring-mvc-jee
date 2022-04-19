@@ -7,28 +7,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller // handler
-public class LoginController {
+// @SessionAttributes("name") // ya no se ocupa, se cambia por spring security
+public class WelcomeController {
 
-	@Autowired
-	LoginService loginService;
+	// @Autowired
+	// LoginService loginService; ya no se ocupa, se cambia por spring security
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	// @ResponseBody // return "something" to be printed on the screen
-	public String showLoginPage() {
-		return "login"; // dipatcher serlvet return the login jsp // View Resolver
+	public String showLoginPage(ModelMap model) {
+		model.addAttribute("name", "in28Minutes");
+		return "welcome"; // dipatcher serlvet return the login jsp // View Resolver // with @ResponseBody return txt login 
 	}
 
+	/* 
+	* se elimina porque se agrega spring securiy
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String handleLoginRequest(@RequestParam String name, @RequestParam String password, ModelMap model) {
-
+	
 		if (!loginService.isUserValid(name, password)) {
 			model.put("errorMessage", "Invalid Credentials"); // will be directed available in the view
 			return "login";
 		}
-
+	
 		model.put("name", name); // will be directed available in the view
 		return "welcome";
-	}
+	}*/
 }

@@ -1,11 +1,11 @@
-<html>
+<%@ include file="common/header.jspf" %>
+	<%@ include file="common/navigation.jspf" %>
 
-	<head>
-		<title>Yahoo!!</title>
-	</head>
+		<div class="container">
+			<spring:message code="welcome.caption" /> ${name}
+			<br />
+			<!--Now, you can <a href="/list-todos?name=${name}">manage your todos.</a> forma 1-->
+			Now, you can <a href="/list-todos">manage your todos.</a>
+		</div>
 
-	<body>
-		Welcome ${name}
-	</body>
-
-</html>
+		<%@ include file="common/footer.jspf" %>

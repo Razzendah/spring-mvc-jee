@@ -9,6 +9,8 @@
 
 	<context:component-scan base-package="com.mycompany" /> <!-- Search for components @Controller and @Service -->
 
+	<mvc:annotation-driven />
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
@@ -18,6 +20,38 @@
 		</property>
 	</bean>
 
-	<mvc:annotation-driven />
+	<bean
+			id="messageSource"
+			class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property
+				name="basename"
+				value="classpath:messages" />
+		<property
+				name="defaultEncoding"
+				value="UTF-8" />
+	</bean>
+
+	<bean
+			id="localeResolver"
+			class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property
+				name="defaultLocale"
+				value="en" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean
+				id="localeChangeInterceptor"
+				class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property
+					name="paramName"
+					value="language" />
+		</bean>
+	</mvc:interceptors>
+
+	<!-- Config for css resources -->
+	<mvc:resources
+			mapping="/webjars/**"
+			location="/webjars/" />
 
 </beans>
